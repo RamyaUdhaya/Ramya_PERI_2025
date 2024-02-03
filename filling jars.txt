@@ -1,0 +1,36 @@
+import math
+import os
+import random
+import re
+import sys
+
+def solve(n, operations):
+    # Write your code here
+    num_candies = 0 
+    for operation in operations:
+        start, end, candies = operation
+        num_candies += (end - start + 1) * candies
+    
+    avg_candies = num_candies // n
+    return avg_candies
+
+
+if __name__ == '__main__':
+    fptr = open(os.environ['OUTPUT_PATH'], 'w')
+
+    first_multiple_input = input().rstrip().split()
+
+    n = int(first_multiple_input[0])
+
+    m = int(first_multiple_input[1])
+
+    operations = []
+
+    for _ in range(m):
+        operations.append(list(map(int, input().rstrip().split())))
+
+    result = solve(n, operations)
+
+    fptr.write(str(result) + '\n')
+
+    fptr.close()
